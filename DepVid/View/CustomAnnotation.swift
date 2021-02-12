@@ -11,10 +11,15 @@ class CustomAnnotation: MKPointAnnotation {
     
     var name: String?
     var address: String?
+    var locationType: String?
+    var mapItem: MKMapItem?
     
-    
-    override init() {
-        super.init()
+    init(name: String?, address: String?, locationType: String?, mapItem: MKMapItem?) {
+        self.name = name
+        self.address = address
+        self.locationType = locationType
+        self.mapItem = mapItem
+        
     }
     
 }

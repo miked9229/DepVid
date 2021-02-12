@@ -16,18 +16,21 @@ class MapViewController: UIViewController {
     
     let mapView = MKMapView()
     let locationManager = CLLocationManager()
+    let selectedPinController = SelectedPinController()
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         if #available(iOS 13.0, *) {
             overrideUserInterfaceStyle = .light
         }
         
-        
         mapView.delegate = self
         locationManager.delegate = self
+        
+        // specifies the amount of distance that the phone must move before location updates are triggered
+        
+        locationManager.distanceFilter = CLLocationDistance(80000)
         
         mapView.showsUserLocation = true
     
@@ -56,9 +59,13 @@ class MapViewController: UIViewController {
                 
             }
             resp?.mapItems.forEach({ (mapitem) in
-                let annotation = MKPointAnnotation()
+                
+                let annotation = CustomAnnotation(name: mapitem.name, address: mapitem.phoneNumber, locationType: locationType.rawValue, mapItem: mapitem)
+                
                 annotation.coordinate = mapitem.placemark.coordinate
                 annotation.title = mapitem.name
+                annotation.name = mapitem.name
+                annotation.address = mapitem.address()
                 self.mapView.addAnnotation(annotation)
             })
             
@@ -83,17 +90,54 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
-        if !(annotation is MKPointAnnotation) { return nil }
-
-        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "id")
-        annotationView.canShowCallout = true
-
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if !(annotation is CustomAnnotation) { return nil }
         
-        // show custom call out
+        if let customAnnotation = annotation as? CustomAnnotation {
+            
+            let annotation = annotation as! CustomAnnotation
+            
+            let annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: "id", name: annotation.name, address: annotation.address, mapItem: annotation.mapItem ?? MKMapItem())
+        
+            if let locationType = customAnnotation.locationType {
+                
+                switch locationType {
+                case "pharmacy":
+                    annotationView.image = #imageLiteral(resourceName: "pharmacy")
+                    
+                case "doctor":
+                    annotationView.image = #imageLiteral(resourceName: "hospital")
+                    
+                case "emergency room":
+                    annotationView.image = #imageLiteral(resourceName: "emergencyroom")
+                default:
+                    annotationView.image = #imageLiteral(resourceName: "default")
+                }
+            }
+            
+//            annotationView.canShowCallout = true
+            return annotationView
+            
+        }
+        return nil
+    }
+
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+//        customView.removeFromSuperview()
+        
+    }
+        
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+
+        
+        let customAnnotationView = view as? CustomAnnotationView
+        
+        let pinController = SelectedPinController()
+        
+        pinController.name = customAnnotationView?.name
+        pinController.address = customAnnotationView?.address
+        pinController.photo = customAnnotationView?.image
+        
+        present(pinController, animated: true)
         
     }
 }
@@ -101,12 +145,10 @@ extension MapViewController: MKMapViewDelegate {
 // MARK: MapViewController: CLLocationManagerDelegate
 extension MapViewController: CLLocationManagerDelegate {
     
-    
     // important method to implement
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 
-        print("Called method")
-        guard let location = locations.first else { return }
+        guard let location = locations.last else { return }
         let locationCoordinate = location.coordinate
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
         let region = MKCoordinateRegion(center: .init(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude), span: span)
@@ -136,11 +178,9 @@ extension MapViewController: CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:
             print("Received Authorized When In Use authorization")
-//            manager.startUpdatingLocation()
-            manager.startMonitoringSignificantLocationChanges()
+            manager.startUpdatingLocation()
         case .authorizedAlways:
-//            manager.startUpdatingLocation()
-            manager.startMonitoringSignificantLocationChanges()
+            manager.startUpdatingLocation()
             print("Received Always Authorized authorization")
         case .denied:
             print("Received Denied authorization")

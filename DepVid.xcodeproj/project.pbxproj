@@ -11,9 +11,12 @@
 		924EE91725D2C5C6003C6A87 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 924EE91625D2C5C6003C6A87 /* JGProgressHUD */; };
 		924EE91B25D2C622003C6A87 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924EE91A25D2C622003C6A87 /* MyLocation.swift */; };
 		924EE92025D2C658003C6A87 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */; };
+		9273A97425D6D49D0028E1D1 /* CustomCallOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97325D6D49D0028E1D1 /* CustomCallOutView.swift */; };
+		9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */; };
+		9273A97E25D7110F0028E1D1 /* SelectedPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */; };
+		9273A98325D715DB0028E1D1 /* MKMapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A98225D715DB0028E1D1 /* MKMapItem.swift */; };
 		92BBBDA525CF21FA00B3F8BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BBBDA425CF21FA00B3F8BF /* AppDelegate.swift */; };
 		92BBBDA725CF21FA00B3F8BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BBBDA625CF21FA00B3F8BF /* SceneDelegate.swift */; };
-		92BBBDA925CF21FA00B3F8BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BBBDA825CF21FA00B3F8BF /* ViewController.swift */; };
 		92BBBDAE25CF21FB00B3F8BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BBBDAD25CF21FB00B3F8BF /* Assets.xcassets */; };
 		92BBBDB125CF21FB00B3F8BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BBBDAF25CF21FB00B3F8BF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,10 +25,13 @@
 		924EE91225D2C566003C6A87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		924EE91A25D2C622003C6A87 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		9273A97325D6D49D0028E1D1 /* CustomCallOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCallOutView.swift; sourceTree = "<group>"; };
+		9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPinController.swift; sourceTree = "<group>"; };
+		9273A98225D715DB0028E1D1 /* MKMapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapItem.swift; sourceTree = "<group>"; };
 		92BBBDA125CF21FA00B3F8BF /* DepVid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DepVid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BBBDA425CF21FA00B3F8BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BBBDA625CF21FA00B3F8BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		92BBBDA825CF21FA00B3F8BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		92BBBDAD25CF21FB00B3F8BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92BBBDB025CF21FB00B3F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BBBDB225CF21FB00B3F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,8 +61,25 @@
 			isa = PBXGroup;
 			children = (
 				924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */,
+				9273A97325D6D49D0028E1D1 /* CustomCallOutView.swift */,
+				9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		9273A98025D715AD0028E1D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9273A98125D715CE0028E1D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9273A98225D715DB0028E1D1 /* MKMapItem.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		92BBBD9825CF21FA00B3F8BF = {
@@ -78,6 +101,8 @@
 		92BBBDA325CF21FA00B3F8BF /* DepVid */ = {
 			isa = PBXGroup;
 			children = (
+				9273A98125D715CE0028E1D1 /* Extensions */,
+				9273A98025D715AD0028E1D1 /* Views */,
 				92BBBDB225CF21FB00B3F8BF /* Info.plist */,
 				924EE91E25D2C642003C6A87 /* View */,
 				924EE91925D2C60D003C6A87 /* Model */,
@@ -90,8 +115,8 @@
 		92BBBDB925CF221100B3F8BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				92BBBDA825CF21FA00B3F8BF /* ViewController.swift */,
 				924EE91225D2C566003C6A87 /* MapViewController.swift */,
+				9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,11 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92BBBDA925CF21FA00B3F8BF /* ViewController.swift in Sources */,
 				92BBBDA525CF21FA00B3F8BF /* AppDelegate.swift in Sources */,
 				924EE91B25D2C622003C6A87 /* MyLocation.swift in Sources */,
+				9273A98325D715DB0028E1D1 /* MKMapItem.swift in Sources */,
+				9273A97E25D7110F0028E1D1 /* SelectedPinController.swift in Sources */,
 				92BBBDA725CF21FA00B3F8BF /* SceneDelegate.swift in Sources */,
 				924EE91325D2C566003C6A87 /* MapViewController.swift in Sources */,
+				9273A97425D6D49D0028E1D1 /* CustomCallOutView.swift in Sources */,
+				9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */,
 				924EE92025D2C658003C6A87 /* CustomAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
