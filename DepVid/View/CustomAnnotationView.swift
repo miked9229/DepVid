@@ -13,14 +13,14 @@ class CustomAnnotationView: MKAnnotationView {
     var name: String?
     var address: String?
     var mapItem: MKMapItem?
-    
+    var selectedPhoto: UIImage?
 
-    init(annotation: MKAnnotation?, reuseIdentifier: String?, name: String?, address: String?, mapItem: MKMapItem) {
+    init(annotation: MKAnnotation?, reuseIdentifier: String?, name: String?, address: String?, mapItem: MKMapItem, selectedPhoto: UIImage?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         self.name = name
         self.address = address
         self.mapItem = mapItem
-    
+        self.selectedPhoto = selectedPhoto
     }
     
     required init?(coder aDecoder: NSCoder) {

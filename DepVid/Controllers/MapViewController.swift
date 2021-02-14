@@ -66,6 +66,27 @@ class MapViewController: UIViewController {
                 annotation.title = mapitem.name
                 annotation.name = mapitem.name
                 annotation.address = mapitem.address()
+                
+
+                switch (locationType.rawValue) {
+                
+                case "emergency room":
+                    annotation.annotationPhoto = #imageLiteral(resourceName: "emergencyphoto")
+                    annotation.selectedPhoto = #imageLiteral(resourceName: "emergencyphoto")
+                case "doctor":
+                    annotation.annotationPhoto  = #imageLiteral(resourceName: "hospitalphoto")
+                    annotation.selectedPhoto = #imageLiteral(resourceName: "hospitalphoto")
+                    
+                case "pharmacy":
+                    
+                    annotation.annotationPhoto  = #imageLiteral(resourceName: "pharmacistphoto")
+                    annotation.selectedPhoto = #imageLiteral(resourceName: "pharmacistphoto")
+                
+                default:
+                    annotation.annotationPhoto = nil
+                }
+                
+                
                 self.mapView.addAnnotation(annotation)
             })
             
@@ -96,7 +117,7 @@ extension MapViewController: MKMapViewDelegate {
             
             let annotation = annotation as! CustomAnnotation
             
-            let annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: "id", name: annotation.name, address: annotation.address, mapItem: annotation.mapItem ?? MKMapItem())
+            let annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: "id", name: annotation.name, address: annotation.address, mapItem: annotation.mapItem ?? MKMapItem(), selectedPhoto: annotation.selectedPhoto)
         
             if let locationType = customAnnotation.locationType {
                 
@@ -113,18 +134,12 @@ extension MapViewController: MKMapViewDelegate {
                     annotationView.image = #imageLiteral(resourceName: "default")
                 }
             }
-            
-//            annotationView.canShowCallout = true
             return annotationView
             
         }
         return nil
     }
 
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-//        customView.removeFromSuperview()
-        
-    }
         
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 
@@ -135,7 +150,7 @@ extension MapViewController: MKMapViewDelegate {
         
         pinController.name = customAnnotationView?.name
         pinController.address = customAnnotationView?.address
-        pinController.photo = customAnnotationView?.image
+        pinController.photo = customAnnotationView?.selectedPhoto
         
         present(pinController, animated: true)
         

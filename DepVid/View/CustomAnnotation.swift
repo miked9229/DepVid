@@ -12,6 +12,8 @@ class CustomAnnotation: MKPointAnnotation {
     var name: String?
     var address: String?
     var locationType: String?
+    var annotationPhoto: UIImage?
+    var selectedPhoto: UIImage?
     var mapItem: MKMapItem?
     
     init(name: String?, address: String?, locationType: String?, mapItem: MKMapItem?) {
@@ -21,5 +23,4 @@ class CustomAnnotation: MKPointAnnotation {
         self.mapItem = mapItem
         
     }
-    
 }

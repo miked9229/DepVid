@@ -36,27 +36,63 @@ class SelectedPinController: UIViewController {
         
     }()
     
+    lazy var directionsButton: UIButton = {
+        
+        let button = UIButton(type: .system)
+        button.setTitle("Get Directions", for: .normal)
+        button.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 5.0
+        return button
+        
+    }()
+    
+    @objc func getDirections() {
+        
+        let directionsMapController = DirectonsMapController()
+        present(directionsMapController, animated: true)
+        
+    }
+    
     override func viewDidLoad() {
         
         view.backgroundColor = .white
         
         let imageView = UIImageView(image: photo?.withRenderingMode(.alwaysOriginal))
         
-        let stack = UIStackView(arrangedSubviews: [UIView(),nameLabel, addressLabel, imageView, UIView()])
+        let infoStack = UIStackView(arrangedSubviews: [nameLabel, addressLabel, UIView()])
+        let imageStack = UIStackView(arrangedSubviews: [imageView])
         
-        stack.axis = .vertical
+        let totalStack = UIStackView(arrangedSubviews: [infoStack, imageView])
         
-    
+        imageStack.axis = .vertical
+        infoStack.axis = .vertical
+        
+        totalStack.axis = .horizontal
+        
         didSet()
         
-        view.addSubview(stack)
+        view.addSubview(infoStack)
+        view.addSubview(imageView)
+        view.addSubview(directionsButton)
         
-        stack.translatesAutoresizingMaskIntoConstraints = false
+        infoStack.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        directionsButton.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        infoStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
+        infoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+
         
+        imageView.topAnchor.constraint(equalTo: infoStack.bottomAnchor, constant: 20).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
+        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        
+        directionsButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24).isActive = true
+        directionsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
+        directionsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
     
 }
