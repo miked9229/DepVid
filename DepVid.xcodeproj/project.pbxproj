@@ -14,11 +14,15 @@
 		9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */; };
 		9273A97E25D7110F0028E1D1 /* SelectedPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */; };
 		9273A98325D715DB0028E1D1 /* MKMapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A98225D715DB0028E1D1 /* MKMapItem.swift */; };
-		92A631BD25D8A97700A66995 /* DirectionsMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92A631BC25D8A97700A66995 /* DirectionsMapController.swift */; };
+		92BAD66C25E2EC4F007FE750 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 92BAD66B25E2EC4F007FE750 /* LBTATools */; };
+		92BAD67725E2FDE4007FE750 /* DirectionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAD67625E2FDE4007FE750 /* DirectionsCollectionViewController.swift */; };
+		92BAD67C25E3066D007FE750 /* DirectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAD67B25E3066D007FE750 /* DirectionsCell.swift */; };
+		92BAD67F25E3137D007FE750 /* DirectionsCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAD67E25E3137D007FE750 /* DirectionsCellHeader.swift */; };
 		92BBBDA525CF21FA00B3F8BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BBBDA425CF21FA00B3F8BF /* AppDelegate.swift */; };
 		92BBBDA725CF21FA00B3F8BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BBBDA625CF21FA00B3F8BF /* SceneDelegate.swift */; };
 		92BBBDAE25CF21FB00B3F8BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92BBBDAD25CF21FB00B3F8BF /* Assets.xcassets */; };
 		92BBBDB125CF21FB00B3F8BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BBBDAF25CF21FB00B3F8BF /* LaunchScreen.storyboard */; };
+		92F3CAC225DCB54600C099D6 /* DirectionsMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F3CAC125DCB54600C099D6 /* DirectionsMapController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,13 +32,16 @@
 		9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPinController.swift; sourceTree = "<group>"; };
 		9273A98225D715DB0028E1D1 /* MKMapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapItem.swift; sourceTree = "<group>"; };
-		92A631BC25D8A97700A66995 /* DirectionsMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMapController.swift; sourceTree = "<group>"; };
+		92BAD67625E2FDE4007FE750 /* DirectionsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCollectionViewController.swift; sourceTree = "<group>"; };
+		92BAD67B25E3066D007FE750 /* DirectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCell.swift; sourceTree = "<group>"; };
+		92BAD67E25E3137D007FE750 /* DirectionsCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCellHeader.swift; sourceTree = "<group>"; };
 		92BBBDA125CF21FA00B3F8BF /* DepVid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DepVid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92BBBDA425CF21FA00B3F8BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92BBBDA625CF21FA00B3F8BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		92BBBDAD25CF21FB00B3F8BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92BBBDB025CF21FB00B3F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BBBDB225CF21FB00B3F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92F3CAC125DCB54600C099D6 /* DirectionsMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMapController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				924EE91725D2C5C6003C6A87 /* JGProgressHUD in Frameworks */,
+				92BAD66C25E2EC4F007FE750 /* LBTATools in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +70,8 @@
 			children = (
 				924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */,
 				9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */,
+				92BAD67B25E3066D007FE750 /* DirectionsCell.swift */,
+				92BAD67E25E3137D007FE750 /* DirectionsCellHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,7 +118,8 @@
 			children = (
 				924EE91225D2C566003C6A87 /* MapViewController.swift */,
 				9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */,
-				92A631BC25D8A97700A66995 /* DirectionsMapController.swift */,
+				92F3CAC125DCB54600C099D6 /* DirectionsMapController.swift */,
+				92BAD67625E2FDE4007FE750 /* DirectionsCollectionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -142,6 +153,7 @@
 			name = DepVid;
 			packageProductDependencies = (
 				924EE91625D2C5C6003C6A87 /* JGProgressHUD */,
+				92BAD66B25E2EC4F007FE750 /* LBTATools */,
 			);
 			productName = DepVid;
 			productReference = 92BBBDA125CF21FA00B3F8BF /* DepVid.app */;
@@ -172,6 +184,7 @@
 			mainGroup = 92BBBD9825CF21FA00B3F8BF;
 			packageReferences = (
 				924EE91525D2C5C6003C6A87 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
+				92BAD66A25E2EC4F007FE750 /* XCRemoteSwiftPackageReference "LBTATools" */,
 			);
 			productRefGroup = 92BBBDA225CF21FA00B3F8BF /* Products */;
 			projectDirPath = "";
@@ -202,10 +215,13 @@
 				92BBBDA525CF21FA00B3F8BF /* AppDelegate.swift in Sources */,
 				924EE91B25D2C622003C6A87 /* MyLocation.swift in Sources */,
 				9273A98325D715DB0028E1D1 /* MKMapItem.swift in Sources */,
+				92BAD67725E2FDE4007FE750 /* DirectionsCollectionViewController.swift in Sources */,
 				9273A97E25D7110F0028E1D1 /* SelectedPinController.swift in Sources */,
 				92BBBDA725CF21FA00B3F8BF /* SceneDelegate.swift in Sources */,
+				92BAD67F25E3137D007FE750 /* DirectionsCellHeader.swift in Sources */,
 				924EE91325D2C566003C6A87 /* MapViewController.swift in Sources */,
-				92A631BD25D8A97700A66995 /* DirectionsMapController.swift in Sources */,
+				92F3CAC225DCB54600C099D6 /* DirectionsMapController.swift in Sources */,
+				92BAD67C25E3066D007FE750 /* DirectionsCell.swift in Sources */,
 				9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */,
 				924EE92025D2C658003C6A87 /* CustomAnnotation.swift in Sources */,
 			);
@@ -411,6 +427,14 @@
 				minimumVersion = 2.2.0;
 			};
 		};
+		92BAD66A25E2EC4F007FE750 /* XCRemoteSwiftPackageReference "LBTATools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bhlvoong/LBTATools.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.17;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -418,6 +442,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 924EE91525D2C5C6003C6A87 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
 			productName = JGProgressHUD;
+		};
+		92BAD66B25E2EC4F007FE750 /* LBTATools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 92BAD66A25E2EC4F007FE750 /* XCRemoteSwiftPackageReference "LBTATools" */;
+			productName = LBTATools;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

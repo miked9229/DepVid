@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 import JGProgressHUD
 
-
 // MARK: MapViewController: UIViewController
 
 class MapViewController: UIViewController {
@@ -17,6 +16,8 @@ class MapViewController: UIViewController {
     let mapView = MKMapView()
     let locationManager = CLLocationManager()
     let selectedPinController = SelectedPinController()
+    var startLocation: MKMapItem?
+    var endLocation: MKMapItem?
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,6 +152,8 @@ extension MapViewController: MKMapViewDelegate {
         pinController.name = customAnnotationView?.name
         pinController.address = customAnnotationView?.address
         pinController.photo = customAnnotationView?.selectedPhoto
+        pinController.startLocation = startLocation
+        pinController.endLocation = customAnnotationView?.mapItem
         
         present(pinController, animated: true)
         
@@ -167,6 +170,9 @@ extension MapViewController: CLLocationManagerDelegate {
         let locationCoordinate = location.coordinate
         let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
         let region = MKCoordinateRegion(center: .init(latitude: locationCoordinate.latitude, longitude: locationCoordinate.longitude), span: span)
+        
+        let placemark = MKPlacemark(coordinate: locationCoordinate)
+        startLocation = MKMapItem(placemark: placemark)
         
         mapView.setRegion(region, animated: false)
         mapView.removeAnnotations(mapView.annotations)

@@ -6,12 +6,16 @@
 //
 
 import UIKit
+import MapKit
 
 class SelectedPinController: UIViewController {
     
     var name: String?;
     var address: String?
     var photo: UIImage?
+    var startLocation: MKMapItem?
+    var endLocation: MKMapItem?
+    var route: MKRoute?
     
     func didSet() {
         nameLabel.text = name
@@ -24,7 +28,6 @@ class SelectedPinController: UIViewController {
         label.font = .boldSystemFont(ofSize: 30)
         label.textColor = .black
         return label
-        
     }()
     
     var addressLabel: UILabel = {
@@ -33,7 +36,6 @@ class SelectedPinController: UIViewController {
         label.textColor = .black
         label.numberOfLines = 0
         return label
-        
     }()
     
     lazy var directionsButton: UIButton = {
@@ -50,7 +52,11 @@ class SelectedPinController: UIViewController {
     
     @objc func getDirections() {
         
-        let directionsMapController = DirectonsMapController()
+        let directionsMapController = DirectionsMapController()
+        directionsMapController.name = name
+        directionsMapController.address = address
+        directionsMapController.startLocation = startLocation
+        directionsMapController.endLocation = endLocation
         present(directionsMapController, animated: true)
         
     }
@@ -94,5 +100,4 @@ class SelectedPinController: UIViewController {
         directionsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         directionsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
     }
-    
 }
