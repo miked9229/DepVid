@@ -19,8 +19,6 @@ class DirectionsMapController: UIViewController {
     
     override func viewDidLoad() {
         
-        view.backgroundColor = .red
-        
         let nameAndAddressView = returnNameAndAddressLabel()
         
         view.addSubview(mapView)
@@ -35,13 +33,13 @@ class DirectionsMapController: UIViewController {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         nameAndAddressView.translatesAutoresizingMaskIntoConstraints = false
         
-        nameAndAddressView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        nameAndAddressView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16).isActive = true
         nameAndAddressView.bottomAnchor.constraint(equalTo: view.topAnchor, constant: 200).isActive = true
         nameAndAddressView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        nameAndAddressView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        nameAndAddressView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24).isActive = true
         
-        mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        mapView.trailingAnchor.constraint(equalTo: nameAndAddressView.trailingAnchor).isActive = true
+        mapView.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor).isActive = true
         mapView.topAnchor.constraint(equalTo: nameAndAddressView.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
@@ -64,7 +62,6 @@ class DirectionsMapController: UIViewController {
         getDirections(startlocationCoordinate: startlocationCoordinate)
         
     }
-    
     
     fileprivate func getDirections(startlocationCoordinate: CLLocationCoordinate2D) {
         
@@ -103,6 +100,7 @@ class DirectionsMapController: UIViewController {
         
         let namelabel = UILabel()
         namelabel.text = name
+        namelabel.numberOfLines = 0
         
         let addressLabel = UILabel()
         addressLabel.numberOfLines = 0
@@ -125,8 +123,9 @@ class DirectionsMapController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-
+        stack.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor).isActive = true
+        stack.trailingAnchor.constraint(equalTo: nameAndAddressView.trailingAnchor).isActive = true
+        
         button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16).isActive = true
         button.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor, constant: 16).isActive = true
         button.trailingAnchor.constraint(equalTo: nameAndAddressView.trailingAnchor, constant: -16).isActive = true
@@ -144,9 +143,10 @@ class DirectionsMapController: UIViewController {
     
     @objc fileprivate func goToDirectionTable() {
         
-        
         let vc = DirectionsCollectionViewController(collectionViewLayout:flowLayout)
         vc.steps = Array(route[1...route.count-1])
+        vc.startLocation = startLocation
+        vc.endLocation = endLocation
         present(vc, animated: true)
         
     }

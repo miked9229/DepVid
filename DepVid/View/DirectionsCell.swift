@@ -10,7 +10,6 @@ import LBTATools
 
 class DirectionsCell: UICollectionViewCell {
 
-    
     var stepLabel = UILabel(text: "Test")
         
     override init(frame: CGRect) {
@@ -18,7 +17,7 @@ class DirectionsCell: UICollectionViewCell {
         
         addSubview(stepLabel)
         
-        backgroundColor = .gray
+        backgroundColor = .white
      
         stepLabel.fillSuperview()
         

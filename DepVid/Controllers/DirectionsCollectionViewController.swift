@@ -13,6 +13,8 @@ import LBTATools
 class DirectionsCollectionViewController: UICollectionViewController {
     
     var steps: [MKRoute.Step]!
+    var startLocation: MKMapItem?
+    var endLocation: MKMapItem?
     
     var cellid = "cellid"
     var cellheaderid = "cellheaderid"
@@ -33,9 +35,7 @@ class DirectionsCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cellid = "cellid"
-        
+                
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellid, for: indexPath) as? DirectionsCell else {
              return UICollectionViewCell()
         }
@@ -53,5 +53,23 @@ extension DirectionsCollectionViewController: UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 12
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        guard let startLoc = startLocation else { return UICollectionReusableView()}
+        
+        guard let endLoc = endLocation else { return UICollectionReusableView()}
+        
+        guard let locName = endLoc.name else { return UICollectionReusableView() }
+        
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:
+                                                                        cellheaderid, for: indexPath) as! DiectionsCellHeaderView
+        
+        
+        header.directionsLabel.text = "Directions to \(locName)"
+        
+        return header
     }
 }
