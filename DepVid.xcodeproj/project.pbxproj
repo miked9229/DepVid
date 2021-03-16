@@ -103,8 +103,8 @@
 		92BBBDA325CF21FA00B3F8BF /* DepVid */ = {
 			isa = PBXGroup;
 			children = (
-				9273A98125D715CE0028E1D1 /* Extensions */,
 				92BBBDB225CF21FB00B3F8BF /* Info.plist */,
+				9273A98125D715CE0028E1D1 /* Extensions */,
 				924EE91E25D2C642003C6A87 /* View */,
 				924EE91925D2C60D003C6A87 /* Model */,
 				92BBBDBA25CF221800B3F8BF /* HelperFiles */,
@@ -369,10 +369,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = md.DepVid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.domainname.depvid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -388,10 +388,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = md.DepVid;
+				PRODUCT_BUNDLE_IDENTIFIER = com.domainname.depvid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

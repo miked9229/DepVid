@@ -60,7 +60,6 @@ class DirectionsMapController: UIViewController {
         mapView.addAnnotation(endAnnotation)
     
         getDirections(startlocationCoordinate: startlocationCoordinate)
-        
     }
     
     fileprivate func getDirections(startlocationCoordinate: CLLocationCoordinate2D) {
@@ -71,17 +70,21 @@ class DirectionsMapController: UIViewController {
         // Use the MKDirections request for MapViews
         
         let directionsRequest = MKDirections.Request()
-
+        
         directionsRequest.source = startLocation
         directionsRequest.destination = endLocation
 
         let directions = MKDirections(request: directionsRequest)
 
+        // call calculate and get a response
+        
         directions.calculate { (res, err) in
             if let err = err {
                 print("Failed to find routing info", err)
                 return
             }
+            
+            // gets the first route from the MKRoutes array
 
             if let firstRoute = res?.routes.first {
                 self.mapView.addOverlay(firstRoute.polyline)
@@ -101,10 +104,13 @@ class DirectionsMapController: UIViewController {
         let namelabel = UILabel()
         namelabel.text = name
         namelabel.numberOfLines = 0
+        namelabel.font = UIFont.boldSystemFont(ofSize: 16)
+        namelabel.textColor = .black
         
         let addressLabel = UILabel()
         addressLabel.numberOfLines = 0
         addressLabel.text = address
+        addressLabel.textColor = .black
         
         let button = UIButton()
         button.addTarget(self, action: #selector(goToDirectionTable), for: .touchUpInside)
@@ -134,6 +140,8 @@ class DirectionsMapController: UIViewController {
         
     }
     
+    // FlowLayout of the UICollectionView
+    
     let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.headerReferenceSize = .init(width: 200, height: 200)
@@ -151,12 +159,14 @@ class DirectionsMapController: UIViewController {
         
     }
 }
+// MARK DirectionsMapController: MKMapViewDelegate
+
 extension DirectionsMapController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-        polylineRenderer.strokeColor = #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)
+        polylineRenderer.strokeColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         polylineRenderer.lineWidth = 5
         return polylineRenderer
     }

@@ -21,6 +21,5 @@ class CustomAnnotation: MKPointAnnotation {
         self.address = address
         self.locationType = locationType
         self.mapItem = mapItem
-        
     }
 }

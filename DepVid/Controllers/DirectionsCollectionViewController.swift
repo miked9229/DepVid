@@ -24,6 +24,9 @@ class DirectionsCollectionViewController: UICollectionViewController {
         
         view.backgroundColor = .white
         collectionView.backgroundColor = .white
+        
+        // very impotant to register the custom header and directions cell
+        
         collectionView.register(DiectionsCellHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellheaderid)
         collectionView.register(DirectionsCell.self, forCellWithReuseIdentifier: cellid)
         
@@ -41,6 +44,8 @@ class DirectionsCollectionViewController: UICollectionViewController {
         }
         
         cell.stepLabel.text = steps[indexPath.row].instructions
+        
+        cell.stepLabel.numberOfLines = 0
         return cell
     }
 }
@@ -57,16 +62,13 @@ extension DirectionsCollectionViewController: UICollectionViewDelegateFlowLayout
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        guard let startLoc = startLocation else { return UICollectionReusableView()}
-        
         guard let endLoc = endLocation else { return UICollectionReusableView()}
         
-        guard let locName = endLoc.name else { return UICollectionReusableView() }
+        guard let locName = endLoc.name else { return UICollectionReusableView()}
         
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:
                                                                         cellheaderid, for: indexPath) as! DiectionsCellHeaderView
-        
         
         header.directionsLabel.text = "Directions to \(locName)"
         

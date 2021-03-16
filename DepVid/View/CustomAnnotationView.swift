@@ -22,9 +22,7 @@ class CustomAnnotationView: MKAnnotationView {
         self.mapItem = mapItem
         self.selectedPhoto = selectedPhoto
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -16,13 +16,10 @@ class DirectionsCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(stepLabel)
-        
         backgroundColor = .white
-     
         stepLabel.fillSuperview()
         
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

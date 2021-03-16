@@ -7,7 +7,17 @@
 
 import MapKit
 
-// Taken from LBTATools
+// This utility function was written by Brian Voong (https://github.com/bhlvoong) and assists users
+// in parsing the address of the placemark from MKMapItem items.
+// code was learned from https://www.letsbuildthatapp.com/course/Maps%20UIKit%20SwiftUI
+
+// Proper Citation:
+// Brian Voong
+// 2021-02-12
+// Maps UIKit SwiftUI
+// Code version: Unknown
+// Type: Source Code
+// https://www.letsbuildthatapp.com/course/Maps%20UIKit%20SwiftUI
 
 extension MKMapItem {
     
@@ -33,7 +43,6 @@ extension MKMapItem {
             addressString += placemark.country!
         }
         return addressString
-        
     }
 }
 

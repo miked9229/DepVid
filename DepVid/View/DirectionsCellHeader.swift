@@ -19,19 +19,14 @@ class DiectionsCellHeaderView: UICollectionReusableView {
         super.init(frame: frame)
         
         setupViews()
-    
     }
     
     private func setupViews() {
         
         addSubview(directionsLabel)
-        
         directionsLabel.centerXToSuperview()
         directionsLabel.centerYToSuperview()
-        
-        
         directionsLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 16).isActive = true
-        
         directionsLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16).isActive = true
     }
     required init?(coder: NSCoder) {

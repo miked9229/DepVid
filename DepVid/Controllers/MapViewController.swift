@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import JGProgressHUD
+import LBTATools
 
 // MARK: MapViewController: UIViewController
 
@@ -15,16 +16,11 @@ class MapViewController: UIViewController {
     
     let mapView = MKMapView()
     let locationManager = CLLocationManager()
-    let selectedPinController = SelectedPinController()
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if #available(iOS 13.0, *) {
-            overrideUserInterfaceStyle = .light
-        }
         
         mapView.delegate = self
         locationManager.delegate = self
@@ -68,7 +64,6 @@ class MapViewController: UIViewController {
                 annotation.name = mapitem.name
                 annotation.address = mapitem.address()
                 
-
                 switch (locationType.rawValue) {
                 
                 case "emergency room":
@@ -87,7 +82,6 @@ class MapViewController: UIViewController {
                     annotation.annotationPhoto = nil
                 }
                 
-                
                 self.mapView.addAnnotation(annotation)
             })
             
@@ -98,13 +92,38 @@ class MapViewController: UIViewController {
     fileprivate func setUpInitialUI() {
         
         view.addSubview(mapView)
+        view.addSubview(directionsView)
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
+        directionsView.translatesAutoresizingMaskIntoConstraints = false
+        
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        directionsView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 32, right: 16), size: .init(width: view.frame.width, height: 40))
+        directionsView.setupShadow(opacity: 0.5, radius: 1.0, offset: .zero, color: .gray)
+        
+    
+    
     }
+    
+    
+    let directionsView: UIView = {
+        
+        let view = UIView(backgroundColor: .white)
+
+        let label = UILabel(text: "Please pick a pin", font: .boldSystemFont(ofSize: 16), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
+        
+        view.addSubview(label)
+        
+        label.centerInSuperview()
+        
+        return view
+        
+        
+    }()
 }
 
 // MARK: MapViewController: MapViewDelegate
@@ -141,12 +160,10 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
 
-        
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 
-        
         let customAnnotationView = view as? CustomAnnotationView
-        
+
         let pinController = SelectedPinController()
         
         pinController.name = customAnnotationView?.name
@@ -161,6 +178,7 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 // MARK: MapViewController: CLLocationManagerDelegate
+
 extension MapViewController: CLLocationManagerDelegate {
     
     // important method to implement
@@ -198,12 +216,11 @@ extension MapViewController: CLLocationManagerDelegate {
         
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:
-            print("Received Authorized When In Use authorization")
             manager.startUpdatingLocation()
         case .authorizedAlways:
-            manager.startUpdatingLocation()
-            print("Received Always Authorized authorization")
+            print("App does not support tracking user always")
         case .denied:
+            requestLocation()
             print("Received Denied authorization")
         case .notDetermined:
             print("User did not provide adequate permissions")
