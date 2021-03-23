@@ -18,6 +18,7 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
+    let label = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,8 +84,10 @@ class MapViewController: UIViewController {
                 }
                 
                 self.mapView.addAnnotation(annotation)
+            
             })
             
+            self.label.text = "Please pick a pin"
         }
         hud.dismiss()
     }
@@ -92,38 +95,41 @@ class MapViewController: UIViewController {
     fileprivate func setUpInitialUI() {
         
         view.addSubview(mapView)
-        view.addSubview(directionsView)
+        
+        let myLabel = returnDirectionsView()
+        
+        view.addSubview(myLabel)
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
-        directionsView.translatesAutoresizingMaskIntoConstraints = false
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
         
         mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        directionsView.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 32, right: 16), size: .init(width: view.frame.width, height: 40))
-        directionsView.setupShadow(opacity: 0.5, radius: 1.0, offset: .zero, color: .gray)
+        myLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 80, right: 16), size: .init(width: view.frame.width, height: 40))
+        myLabel.setupShadow(opacity: 0.5, radius: 1.0, offset: .zero, color: .gray)
         
     
     
     }
     
     
-    let directionsView: UIView = {
+    
+    
+    fileprivate func returnDirectionsView() -> UIView {
         
         let view = UIView(backgroundColor: .white)
 
-        let label = UILabel(text: "Please pick a pin", font: .boldSystemFont(ofSize: 16), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
-        
         view.addSubview(label)
         
         label.centerInSuperview()
         
         return view
         
-        
-    }()
+    }
+    
 }
 
 // MARK: MapViewController: MapViewDelegate
@@ -217,13 +223,11 @@ extension MapViewController: CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse:
             manager.startUpdatingLocation()
-        case .authorizedAlways:
-            print("App does not support tracking user always")
         case .denied:
             requestLocation()
-            print("Received Denied authorization")
+            label.text = "No Pins Available - DepVid Requires Location Services"
         case .notDetermined:
-            print("User did not provide adequate permissions")
+            label.text = "No Pins Available - DepVid Requires Location Services"
         case .restricted:
             print("Received restricted authorization")
         default:
