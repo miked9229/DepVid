@@ -1,0 +1,25 @@
+# 1 - A list of devices you want to take the screenshots from
+devices([
+  "iPhone 11 Pro Max",
+  "iPhone SE (2nd generation)",
+  "iPhone 8"
+])
+
+# 2 - A list of supported languages
+
+languages([
+  'en-US',
+  'fr-FR'
+])
+
+# 3 - The name of the scheme which contains the UI Tests
+
+scheme("DepVid UITests")
+
+# 4 - Where should the resulting screenshots be stored?
+
+output_directory "./fastlane/screenshots"
+
+# 5 - Clears previous screenshots
+
+clear_previous_screenshots(true)
