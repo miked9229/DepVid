@@ -110,13 +110,8 @@ class MapViewController: UIViewController {
         
         myLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 80, right: 16), size: .init(width: view.frame.width, height: 40))
         myLabel.setupShadow(opacity: 0.5, radius: 1.0, offset: .zero, color: .gray)
-        
-    
     
     }
-    
-    
-    
     
     fileprivate func returnDirectionsView() -> UIView {
         
@@ -129,7 +124,6 @@ class MapViewController: UIViewController {
         return view
         
     }
-    
 }
 
 // MARK: MapViewController: MapViewDelegate
@@ -211,7 +205,6 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         
         handleAuthorization(manager: manager)
-        
     }
     
     fileprivate func handleAuthorization(manager: CLLocationManager) {

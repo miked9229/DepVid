@@ -44,7 +44,6 @@ class DirectionsMapController: UIViewController {
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         addPinsToMap()
-    
     }
     
     public func addPinsToMap() {

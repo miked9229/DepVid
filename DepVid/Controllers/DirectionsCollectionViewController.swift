@@ -29,7 +29,6 @@ class DirectionsCollectionViewController: UICollectionViewController {
         
         collectionView.register(DiectionsCellHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellheaderid)
         collectionView.register(DirectionsCell.self, forCellWithReuseIdentifier: cellid)
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -67,9 +66,7 @@ extension DirectionsCollectionViewController: UICollectionViewDelegateFlowLayout
         guard let locName = endLoc.name else { return UICollectionReusableView()}
         
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier:
-                                                                        cellheaderid, for: indexPath) as! DiectionsCellHeaderView
-        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellheaderid, for: indexPath) as! DiectionsCellHeaderView
         header.directionsLabel.text = "Directions to \(locName)"
         
         return header
