@@ -66,10 +66,8 @@ class SelectedPinController: UIViewController {
         view.backgroundColor = .white
         
         let imageView = UIImageView(image: photo?.withRenderingMode(.alwaysOriginal))
-        
         let infoStack = UIStackView(arrangedSubviews: [nameLabel, addressLabel, UIView()])
         let imageStack = UIStackView(arrangedSubviews: [imageView])
-        
         let totalStack = UIStackView(arrangedSubviews: [infoStack, imageView])
         
         imageStack.axis = .vertical

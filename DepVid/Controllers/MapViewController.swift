@@ -32,9 +32,11 @@ class MapViewController: UIViewController {
         
         mapView.showsUserLocation = true
     
-        requestLocation()
-        setUpInitialUI()
+        // Requests that the application get get access to the user's location
         
+        requestLocation()
+        
+        setUpInitialUI()
     }
         
     fileprivate func getLocations(region: MKCoordinateRegion, locationType: LocationType)  {
@@ -116,13 +118,9 @@ class MapViewController: UIViewController {
     fileprivate func returnDirectionsView() -> UIView {
         
         let view = UIView(backgroundColor: .white)
-
         view.addSubview(label)
-        
         label.centerInSuperview()
-        
         return view
-        
     }
 }
 
@@ -217,7 +215,6 @@ extension MapViewController: CLLocationManagerDelegate {
         case .authorizedWhenInUse:
             manager.startUpdatingLocation()
         case .denied:
-            requestLocation()
             label.text = "No Pins Available - DepVid Requires Location Services"
         case .notDetermined:
             label.text = "No Pins Available - DepVid Requires Location Services"
