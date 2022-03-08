@@ -9,7 +9,6 @@ import UIKit
 import MapKit
 import LBTATools
 
-
 class DirectionsCollectionViewController: UICollectionViewController {
     
     var steps: [MKRoute.Step]!
