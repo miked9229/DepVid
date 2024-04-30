@@ -1,40 +1,27 @@
-name: Pull Request
+name: Pull Request To Main Branch
 
 on:
-  pull_request:
+  push:
     branches:
-      - main
-  workflow_dispatch:
+      - main # Adjust branch as needed
 
 jobs:
-  test:
-    runs-on: macos-11
+  build:
+    runs-on: macos-latest # Use macOS runner for iOS builds, adjust for other platforms
+
     steps:
       - uses: actions/checkout@v2
 
-      - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          access_token: ${{ github.token }}
+          ruby-version: 3.1.2 # Adjust Ruby version as needed
 
-      - uses: maxim-lobanov/setup-xcode@v1
-        with:
-          xcode-version: latest-stable
+      - name: Install Fastlane
+        run: gem install fastlane -NV
 
-      - uses: ruby/setup-ruby@v1
+      - name: Execute Fastlane
+        run: fastlane screenshot # Replace <lane_name> with your Fastlane lane
 
-      - name: Install Bundler
-        run: gem install bundler
 
-      - name: Install gems
-        run: bundle install
-
-      - name: Swift Packages Cache
-        uses: actions/cache@v2
-        id: cache
-        with:
-          path: |
-            Build/SourcePackages
-            Build/Build/Products
-          key: ${{ runner.os }}-deps-v1-${{ hashFiles('BILDsolid.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
-          restore-keys: ${{ runner.os }}-deps-v1-
+      # Additional steps can be added as needed (e.g., notifications, deployments)
