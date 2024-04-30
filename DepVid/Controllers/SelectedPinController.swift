@@ -65,37 +65,28 @@ class SelectedPinController: UIViewController {
         
         view.backgroundColor = .white
         
-        let imageView = UIImageView(image: photo?.withRenderingMode(.alwaysOriginal))
-        let infoStack = UIStackView(arrangedSubviews: [nameLabel, addressLabel, UIView()])
-        let imageStack = UIStackView(arrangedSubviews: [imageView])
-        let totalStack = UIStackView(arrangedSubviews: [infoStack, imageView])
-        
-        imageStack.axis = .vertical
-        infoStack.axis = .vertical
-        
-        totalStack.axis = .horizontal
-        
         didSet()
         
-        view.addSubview(infoStack)
-        view.addSubview(imageView)
-        view.addSubview(directionsButton)
+        let imageView = UIImageView(image: photo?.withRenderingMode(.alwaysOriginal))
+        imageView.contentMode = .scaleAspectFit
         
-        infoStack.translatesAutoresizingMaskIntoConstraints = false
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        directionsButton.translatesAutoresizingMaskIntoConstraints = false
+        let stack = UIStackView(arrangedSubviews: [
+            nameLabel,
+            addressLabel,
+            imageView,
+            directionsButton
         
-        infoStack.topAnchor.constraint(equalTo: view.topAnchor, constant: 24).isActive = true
-        infoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        infoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-
+        ])
+        stack.spacing = 20
+        stack.axis = .vertical
         
-        imageView.topAnchor.constraint(equalTo: infoStack.bottomAnchor, constant: 20).isActive = true
-        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8).isActive = true
-        imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stack)
         
-        directionsButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 24).isActive = true
-        directionsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-        directionsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stack.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
+        ])
     }
 }

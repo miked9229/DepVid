@@ -15,7 +15,7 @@ class DirectionsMapController: UIViewController {
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
     let mapView = MKMapView()
-    var route: [MKRoute.Step]!
+    var route: [MKRoute.Step]?
     
     override func viewDidLoad() {
         
@@ -26,9 +26,6 @@ class DirectionsMapController: UIViewController {
         
         mapView.delegate = self
         mapView.showsUserLocation = true
-        
-        mapView.isScrollEnabled = false
-        mapView.isZoomEnabled = false
         
         mapView.translatesAutoresizingMaskIntoConstraints = false
         nameAndAddressView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +60,7 @@ class DirectionsMapController: UIViewController {
     
     fileprivate func getDirections(startlocationCoordinate: CLLocationCoordinate2D) {
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: .init(latitude: startlocationCoordinate.latitude, longitude: startlocationCoordinate.longitude), span: span)
         
         // Use the MKDirections request for MapViews
@@ -128,8 +125,9 @@ class DirectionsMapController: UIViewController {
         stack.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
         
-        stack.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor).isActive = true
-        stack.trailingAnchor.constraint(equalTo: nameAndAddressView.trailingAnchor).isActive = true
+        stack.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor, constant: 16).isActive = true
+        stack.trailingAnchor.constraint(equalTo: nameAndAddressView.trailingAnchor, constant: -16).isActive = true
+        stack.topAnchor.constraint(equalTo: nameAndAddressView.topAnchor, constant: 16).isActive = true
         
         button.topAnchor.constraint(equalTo: stack.bottomAnchor, constant: 16).isActive = true
         button.leadingAnchor.constraint(equalTo: nameAndAddressView.leadingAnchor, constant: 16).isActive = true
@@ -149,13 +147,13 @@ class DirectionsMapController: UIViewController {
 
     
     @objc fileprivate func goToDirectionTable() {
-        
-        let vc = DirectionsCollectionViewController(collectionViewLayout:flowLayout)
-        vc.steps = Array(route[1...route.count-1])
-        vc.startLocation = startLocation
-        vc.endLocation = endLocation
-        present(vc, animated: true)
-        
+        if let route {
+            let vc = DirectionsCollectionViewController(collectionViewLayout:flowLayout)
+            vc.steps = Array(route[1...route.count-1])
+            vc.startLocation = startLocation
+            vc.endLocation = endLocation
+            present(vc, animated: true)
+        }
     }
 }
 // MARK DirectionsMapController: MKMapViewDelegate
