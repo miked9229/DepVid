@@ -13,7 +13,7 @@ class DiectionsCellHeaderView: UICollectionReusableView {
 
     var endLocation: MKMapItem?
     
-    let directionsLabel = UILabel(text: "Directions", font: .boldSystemFont(ofSize: 16), textColor: .black, textAlignment: .center, numberOfLines: 0)
+    let directionsLabel = UILabel(text: "Directions", font: .boldSystemFont(ofSize: 24), textColor: .black, textAlignment: .center, numberOfLines: 0)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

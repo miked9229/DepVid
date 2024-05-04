@@ -1,0 +1,27 @@
+name: Pull Request To Main Branch
+
+on:
+  push:
+    branches:
+      - main # Adjust branch as needed
+
+jobs:
+  build:
+    runs-on: macos-latest # Use macOS runner for iOS builds, adjust for other platforms
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2 # Adjust Ruby version as needed
+
+      - name: Install Fastlane
+        run: gem install fastlane -NV
+
+      - name: Execute Fastlane
+        run: fastlane screenshot # Replace <lane_name> with your Fastlane lane
+
+
+      # Additional steps can be added as needed (e.g., notifications, deployments)

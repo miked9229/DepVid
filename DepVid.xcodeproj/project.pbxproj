@@ -3,18 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		922ACFAD26019066004AACFD /* DepVid_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ACFAC26019066004AACFD /* DepVid_UITests.swift */; };
-		922ACFB7260190F4004AACFD /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922ACFB6260190F4004AACFD /* SnapshotHelper.swift */; };
 		924EE91325D2C566003C6A87 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924EE91225D2C566003C6A87 /* MapViewController.swift */; };
 		924EE91B25D2C622003C6A87 /* MyLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924EE91A25D2C622003C6A87 /* MyLocation.swift */; };
 		924EE92025D2C658003C6A87 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */; };
 		9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */; };
 		9273A97E25D7110F0028E1D1 /* SelectedPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */; };
 		9273A98325D715DB0028E1D1 /* MKMapItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9273A98225D715DB0028E1D1 /* MKMapItem.swift */; };
+		927B4EFC2BE1C96F0074EC04 /* DepVidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B4EFB2BE1C96F0074EC04 /* DepVidUITests.swift */; };
+		927B4EFE2BE1C96F0074EC04 /* DepVidUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B4EFD2BE1C96F0074EC04 /* DepVidUITestsLaunchTests.swift */; };
+		927B4F052BE1CB190074EC04 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927B4F042BE1CB190074EC04 /* SnapshotHelper.swift */; };
 		92BAD66C25E2EC4F007FE750 /* LBTATools in Frameworks */ = {isa = PBXBuildFile; productRef = 92BAD66B25E2EC4F007FE750 /* LBTATools */; };
 		92BAD67725E2FDE4007FE750 /* DirectionsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAD67625E2FDE4007FE750 /* DirectionsCollectionViewController.swift */; };
 		92BAD67C25E3066D007FE750 /* DirectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BAD67B25E3066D007FE750 /* DirectionsCell.swift */; };
@@ -28,7 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		922ACFAF26019066004AACFD /* PBXContainerItemProxy */ = {
+		927B4EFF2BE1C96F0074EC04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 92BBBD9925CF21FA00B3F8BF /* Project object */;
 			proxyType = 1;
@@ -38,16 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		922ACFAA26019066004AACFD /* DepVid UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DepVid UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		922ACFAC26019066004AACFD /* DepVid_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepVid_UITests.swift; sourceTree = "<group>"; };
-		922ACFAE26019066004AACFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		922ACFB6260190F4004AACFD /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		924EE91225D2C566003C6A87 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		924EE91A25D2C622003C6A87 /* MyLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocation.swift; sourceTree = "<group>"; };
 		924EE91F25D2C658003C6A87 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		9273A97A25D6DD7A0028E1D1 /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		9273A97D25D7110F0028E1D1 /* SelectedPinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedPinController.swift; sourceTree = "<group>"; };
 		9273A98225D715DB0028E1D1 /* MKMapItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMapItem.swift; sourceTree = "<group>"; };
+		927B4EF92BE1C96F0074EC04 /* DepVidUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DepVidUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		927B4EFB2BE1C96F0074EC04 /* DepVidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepVidUITests.swift; sourceTree = "<group>"; };
+		927B4EFD2BE1C96F0074EC04 /* DepVidUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepVidUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		927B4F042BE1CB190074EC04 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		92BAD67625E2FDE4007FE750 /* DirectionsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCollectionViewController.swift; sourceTree = "<group>"; };
 		92BAD67B25E3066D007FE750 /* DirectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCell.swift; sourceTree = "<group>"; };
 		92BAD67E25E3137D007FE750 /* DirectionsCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsCellHeader.swift; sourceTree = "<group>"; };
@@ -61,7 +62,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		922ACFA726019066004AACFD /* Frameworks */ = {
+		927B4EF62BE1C96F0074EC04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,16 +81,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		922ACFAB26019066004AACFD /* DepVid UITests */ = {
-			isa = PBXGroup;
-			children = (
-				922ACFAC26019066004AACFD /* DepVid_UITests.swift */,
-				922ACFB6260190F4004AACFD /* SnapshotHelper.swift */,
-				922ACFAE26019066004AACFD /* Info.plist */,
-			);
-			path = "DepVid UITests";
-			sourceTree = "<group>";
-		};
 		924EE91925D2C60D003C6A87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,11 +108,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		927B4EFA2BE1C96F0074EC04 /* DepVidUITests */ = {
+			isa = PBXGroup;
+			children = (
+				927B4F042BE1CB190074EC04 /* SnapshotHelper.swift */,
+				927B4EFB2BE1C96F0074EC04 /* DepVidUITests.swift */,
+				927B4EFD2BE1C96F0074EC04 /* DepVidUITestsLaunchTests.swift */,
+			);
+			path = DepVidUITests;
+			sourceTree = "<group>";
+		};
 		92BBBD9825CF21FA00B3F8BF = {
 			isa = PBXGroup;
 			children = (
 				92BBBDA325CF21FA00B3F8BF /* DepVid */,
-				922ACFAB26019066004AACFD /* DepVid UITests */,
+				927B4EFA2BE1C96F0074EC04 /* DepVidUITests */,
 				92BBBDA225CF21FA00B3F8BF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				92BBBDA125CF21FA00B3F8BF /* DepVid.app */,
-				922ACFAA26019066004AACFD /* DepVid UITests.xctest */,
+				927B4EF92BE1C96F0074EC04 /* DepVidUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -173,22 +174,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		922ACFA926019066004AACFD /* DepVid UITests */ = {
+		927B4EF82BE1C96F0074EC04 /* DepVidUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 922ACFB126019066004AACFD /* Build configuration list for PBXNativeTarget "DepVid UITests" */;
+			buildConfigurationList = 927B4F012BE1C96F0074EC04 /* Build configuration list for PBXNativeTarget "DepVidUITests" */;
 			buildPhases = (
-				922ACFA626019066004AACFD /* Sources */,
-				922ACFA726019066004AACFD /* Frameworks */,
-				922ACFA826019066004AACFD /* Resources */,
+				927B4EF52BE1C96F0074EC04 /* Sources */,
+				927B4EF62BE1C96F0074EC04 /* Frameworks */,
+				927B4EF72BE1C96F0074EC04 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				922ACFB026019066004AACFD /* PBXTargetDependency */,
+				927B4F002BE1C96F0074EC04 /* PBXTargetDependency */,
 			);
-			name = "DepVid UITests";
-			productName = "DepVid UITests";
-			productReference = 922ACFAA26019066004AACFD /* DepVid UITests.xctest */;
+			name = DepVidUITests;
+			productName = DepVidUITests;
+			productReference = 927B4EF92BE1C96F0074EC04 /* DepVidUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		92BBBDA025CF21FA00B3F8BF /* DepVid */ = {
@@ -218,11 +219,12 @@
 		92BBBD9925CF21FA00B3F8BF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				BuildIndependentTargetsInParallel = YES;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					922ACFA926019066004AACFD = {
-						CreatedOnToolsVersion = 12.4;
+					927B4EF82BE1C96F0074EC04 = {
+						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 92BBBDA025CF21FA00B3F8BF;
 					};
 					92BBBDA025CF21FA00B3F8BF = {
@@ -248,13 +250,13 @@
 			projectRoot = "";
 			targets = (
 				92BBBDA025CF21FA00B3F8BF /* DepVid */,
-				922ACFA926019066004AACFD /* DepVid UITests */,
+				927B4EF82BE1C96F0074EC04 /* DepVidUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		922ACFA826019066004AACFD /* Resources */ = {
+		927B4EF72BE1C96F0074EC04 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,12 +275,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		922ACFA626019066004AACFD /* Sources */ = {
+		927B4EF52BE1C96F0074EC04 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				922ACFAD26019066004AACFD /* DepVid_UITests.swift in Sources */,
-				922ACFB7260190F4004AACFD /* SnapshotHelper.swift in Sources */,
+				927B4EFE2BE1C96F0074EC04 /* DepVidUITestsLaunchTests.swift in Sources */,
+				927B4EFC2BE1C96F0074EC04 /* DepVidUITests.swift in Sources */,
+				927B4F052BE1CB190074EC04 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,10 +307,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		922ACFB026019066004AACFD /* PBXTargetDependency */ = {
+		927B4F002BE1C96F0074EC04 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 92BBBDA025CF21FA00B3F8BF /* DepVid */;
-			targetProxy = 922ACFAF26019066004AACFD /* PBXContainerItemProxy */;
+			targetProxy = 927B4EFF2BE1C96F0074EC04 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -323,42 +326,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		922ACFB226019066004AACFD /* Debug */ = {
+		927B4F022BE1C96F0074EC04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2E3GYECC25;
-				INFOPLIST_FILE = "DepVid UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "md.DepVid-UITests";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59246CF2XH;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaeldoroff..DepVidUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DepVid;
 			};
 			name = Debug;
 		};
-		922ACFB326019066004AACFD /* Release */ = {
+		927B4F032BE1C96F0074EC04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2E3GYECC25;
-				INFOPLIST_FILE = "DepVid UITests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "md.DepVid-UITests";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 59246CF2XH;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.michaeldoroff..DepVidUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = DepVid;
@@ -369,6 +373,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -402,6 +407,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -430,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -463,6 +470,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -528,11 +536,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		922ACFB126019066004AACFD /* Build configuration list for PBXNativeTarget "DepVid UITests" */ = {
+		927B4F012BE1C96F0074EC04 /* Build configuration list for PBXNativeTarget "DepVidUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				922ACFB226019066004AACFD /* Debug */,
-				922ACFB326019066004AACFD /* Release */,
+				927B4F022BE1C96F0074EC04 /* Debug */,
+				927B4F032BE1C96F0074EC04 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

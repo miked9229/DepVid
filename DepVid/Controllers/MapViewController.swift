@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     let locationManager = CLLocationManager()
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
-    let label = UILabel(text: "", font: .boldSystemFont(ofSize: 14), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
+    let label = UILabel(text: "", font: .boldSystemFont(ofSize: 20), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +89,7 @@ class MapViewController: UIViewController {
             
             })
             
-            self.label.text = "Please pick a pin"
+            self.label.text = "Please pick a pin:\n\n Green - Pharmacies \n Blue - Doctors \n Red - Emergency Rooms "
         }
         hud.dismiss()
     }
@@ -110,7 +110,7 @@ class MapViewController: UIViewController {
         mapView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
-        myLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 80, right: 16), size: .init(width: view.frame.width, height: 40))
+        myLabel.anchor(top: nil, leading: view.leadingAnchor, bottom: view.bottomAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 16, bottom: 80, right: 16), size: .init(width: view.frame.width, height: 150))
         myLabel.setupShadow(opacity: 0.5, radius: 1.0, offset: .zero, color: .gray)
     
     }
@@ -141,13 +141,13 @@ extension MapViewController: MKMapViewDelegate {
                 
                 switch locationType {
                 case "pharmacy":
-                    annotationView.image = #imageLiteral(resourceName: "pharmacy")
+                    annotationView.image = #imageLiteral(resourceName: "greenMapPin")
                     
                 case "doctor":
-                    annotationView.image = #imageLiteral(resourceName: "hospital")
+                    annotationView.image = #imageLiteral(resourceName: "blueMapPin")
                     
                 case "emergency room":
-                    annotationView.image = #imageLiteral(resourceName: "emergencyroom")
+                    annotationView.image = #imageLiteral(resourceName: "redMapPin")
                 default:
                     annotationView.image = #imageLiteral(resourceName: "default")
                 }
