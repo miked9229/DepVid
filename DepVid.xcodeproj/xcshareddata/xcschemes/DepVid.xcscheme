@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1530"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -20,6 +20,20 @@
                ReferencedContainer = "container:DepVid.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "922ACFA926019066004AACFD"
+               BuildableName = "DepVid UITests.xctest"
+               BlueprintName = "DepVid UITests"
+               ReferencedContainer = "container:DepVid.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -35,6 +49,17 @@
                BlueprintIdentifier = "922ACFA926019066004AACFD"
                BuildableName = "DepVid UITests.xctest"
                BlueprintName = "DepVid UITests"
+               ReferencedContainer = "container:DepVid.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "927B4EE92BE1C7E10074EC04"
+               BuildableName = "DepVidUITests.xctest"
+               BlueprintName = "DepVidUITests"
                ReferencedContainer = "container:DepVid.xcodeproj">
             </BuildableReference>
          </TestableReference>
