@@ -10,14 +10,35 @@ import MapKit
 import LBTATools
 
 class DirectionsCollectionViewController: UICollectionViewController {
-    
-    var steps: [MKRoute.Step]!
+
+    var steps: [MKRoute.Step] = []
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
-    
+
     var cellid = "cellid"
     var cellheaderid = "cellheaderid"
-    
+
+    convenience init() {
+        self.init(collectionViewLayout: Self.makeLayout())
+    }
+
+    private static func makeLayout() -> UICollectionViewCompositionalLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(100))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 12
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(200))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
+
+        return UICollectionViewCompositionalLayout(section: section)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,18 +69,10 @@ class DirectionsCollectionViewController: UICollectionViewController {
     }
 }
 
-extension DirectionsCollectionViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: view.frame.width, height: 100)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 12
-    }
-    
+extension DirectionsCollectionViewController {
+
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
+
         guard let endLoc = endLocation else { return UICollectionReusableView()}
         guard let locName = endLoc.name else { return UICollectionReusableView()}
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: cellheaderid, for: indexPath) as! DiectionsCellHeaderView

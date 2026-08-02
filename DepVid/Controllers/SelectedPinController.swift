@@ -16,7 +16,8 @@ class SelectedPinController: UIViewController {
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
     var route: MKRoute?
-    
+    var onGetDirections: ((DirectionsRequest) -> Void)?
+
     func didSet() {
         nameLabel.text = name
         addressLabel.text = address
@@ -51,14 +52,15 @@ class SelectedPinController: UIViewController {
     }()
     
     @objc func getDirections() {
-        
-        let directionsMapController = DirectionsMapController()
-        directionsMapController.name = name
-        directionsMapController.address = address
-        directionsMapController.startLocation = startLocation
-        directionsMapController.endLocation = endLocation
-        present(directionsMapController, animated: true)
-        
+
+        let request = DirectionsRequest(
+            name: name,
+            address: address,
+            startLocation: startLocation,
+            endLocation: endLocation
+        )
+
+        onGetDirections?(request)
     }
     
     override func viewDidLoad() {

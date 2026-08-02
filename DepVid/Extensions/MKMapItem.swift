@@ -22,25 +22,25 @@ import MapKit
 extension MKMapItem {
     
     func address() -> String {
-        
+
         var addressString = ""
-        if placemark.subThoroughfare != nil {
-            addressString = placemark.subThoroughfare! + " "
+        if let subThoroughfare = placemark.subThoroughfare {
+            addressString = subThoroughfare + " "
         }
-        if placemark.thoroughfare != nil {
-            addressString += placemark.thoroughfare! + ", "
+        if let thoroughfare = placemark.thoroughfare {
+            addressString += thoroughfare + ", "
         }
-        if placemark.postalCode != nil {
-            addressString += placemark.postalCode! + " "
+        if let postalCode = placemark.postalCode {
+            addressString += postalCode + " "
         }
-        if placemark.locality != nil {
-            addressString += placemark.locality! + ", "
+        if let locality = placemark.locality {
+            addressString += locality + ", "
         }
-        if placemark.administrativeArea != nil {
-            addressString += placemark.administrativeArea! + " "
+        if let administrativeArea = placemark.administrativeArea {
+            addressString += administrativeArea + " "
         }
-        if placemark.country != nil {
-            addressString += placemark.country!
+        if let country = placemark.country {
+            addressString += country
         }
         return addressString
     }

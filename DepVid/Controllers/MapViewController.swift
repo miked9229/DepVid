@@ -19,7 +19,9 @@ class MapViewController: UIViewController {
     var startLocation: MKMapItem?
     var endLocation: MKMapItem?
     let label = UILabel(text: "", font: .boldSystemFont(ofSize: 20), textColor: UIColor.black, textAlignment: .center, numberOfLines: 0)
- 
+    var onPinSelected: ((PinSelection) -> Void)?
+    fileprivate let annotationViewReuseIdentifier = "CustomAnnotationView"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +42,9 @@ class MapViewController: UIViewController {
     }
         
     fileprivate func getLocations(region: MKCoordinateRegion, locationType: LocationType)  {
-        
+
         // use the MKRequest to search for pharmacy, hospital, covid testing, etc.
-        
+
         let hud = JGProgressHUD()
         hud.textLabel.text = "Pulling Information on Health Services..."
         hud.show(in: view)
@@ -50,48 +52,32 @@ class MapViewController: UIViewController {
         let request = MKLocalSearch.Request()
         request.naturalLanguageQuery = locationType.rawValue
         request.region = region
-            
+
         let search = MKLocalSearch(request: request)
-        search.start { (resp, err) in
-            
-            if let err = err {
-                print("Error: ", err)
-                
-            }
-            resp?.mapItems.forEach({ (mapitem) in
-                
-                let annotation = CustomAnnotation(name: mapitem.name, address: mapitem.phoneNumber, locationType: locationType.rawValue, mapItem: mapitem)
-                
-                annotation.coordinate = mapitem.placemark.coordinate
-                annotation.title = mapitem.name
-                annotation.name = mapitem.name
-                annotation.address = mapitem.address()
-                
-                switch (locationType.rawValue) {
-                
-                case "emergency room":
-                    annotation.annotationPhoto = #imageLiteral(resourceName: "emergencyphoto")
-                    annotation.selectedPhoto = #imageLiteral(resourceName: "emergencyphoto")
-                case "doctor":
-                    annotation.annotationPhoto  = #imageLiteral(resourceName: "hospitalphoto")
-                    annotation.selectedPhoto = #imageLiteral(resourceName: "hospitalphoto")
-                    
-                case "pharmacy":
-                    
-                    annotation.annotationPhoto  = #imageLiteral(resourceName: "pharmacistphoto")
-                    annotation.selectedPhoto = #imageLiteral(resourceName: "pharmacistphoto")
-                
-                default:
-                    annotation.annotationPhoto = nil
+
+        Task { [weak self] in
+            guard let self else { return }
+            defer { hud.dismiss() }
+            do {
+                let response = try await search.start()
+                for mapItem in response.mapItems {
+                    let annotation = CustomAnnotation(name: mapItem.name, address: mapItem.phoneNumber, locationType: locationType.rawValue, mapItem: mapItem)
+
+                    annotation.coordinate = mapItem.placemark.coordinate
+                    annotation.title = mapItem.name
+                    annotation.name = mapItem.name
+                    annotation.address = mapItem.address()
+                    annotation.annotationPhoto = locationType.pinPhoto
+                    annotation.selectedPhoto = locationType.pinPhoto
+
+                    mapView.addAnnotation(annotation)
                 }
-                
-                self.mapView.addAnnotation(annotation)
-            
-            })
-            
-            self.label.text = "Please pick a pin:\n\n Green - Pharmacies \n Blue - Doctors \n Red - Emergency Rooms "
+
+                label.text = "Please pick a pin:\n\n Green - Pharmacies \n Blue - Doctors \n Red - Emergency Rooms "
+            } catch {
+                print("Error: ", error)
+            }
         }
-        hud.dismiss()
     }
         
     fileprivate func setUpInitialUI() {
@@ -126,52 +112,46 @@ class MapViewController: UIViewController {
 
 // MARK: MapViewController: MapViewDelegate
 extension MapViewController: MKMapViewDelegate {
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
-        if !(annotation is CustomAnnotation) { return nil }
-        
-        if let customAnnotation = annotation as? CustomAnnotation {
-            
-            let annotation = annotation as! CustomAnnotation
-            
-            let annotationView = CustomAnnotationView(annotation: annotation, reuseIdentifier: "id", name: annotation.name, address: annotation.address, mapItem: annotation.mapItem ?? MKMapItem(), selectedPhoto: annotation.selectedPhoto)
-        
-            if let locationType = customAnnotation.locationType {
-                
-                switch locationType {
-                case "pharmacy":
-                    annotationView.image = #imageLiteral(resourceName: "greenMapPin")
-                    
-                case "doctor":
-                    annotationView.image = #imageLiteral(resourceName: "blueMapPin")
-                    
-                case "emergency room":
-                    annotationView.image = #imageLiteral(resourceName: "redMapPin")
-                default:
-                    annotationView.image = #imageLiteral(resourceName: "default")
-                }
-            }
-            return annotationView
-            
+        guard let customAnnotation = annotation as? CustomAnnotation else { return nil }
+
+        let annotationView: CustomAnnotationView
+        if let dequeued = mapView.dequeueReusableAnnotationView(withIdentifier: annotationViewReuseIdentifier) as? CustomAnnotationView {
+            annotationView = dequeued
+            annotationView.annotation = customAnnotation
+            annotationView.name = customAnnotation.name
+            annotationView.address = customAnnotation.address
+            annotationView.mapItem = customAnnotation.mapItem
+            annotationView.selectedPhoto = customAnnotation.selectedPhoto
+        } else {
+            annotationView = CustomAnnotationView(annotation: customAnnotation, reuseIdentifier: annotationViewReuseIdentifier, name: customAnnotation.name, address: customAnnotation.address, mapItem: customAnnotation.mapItem ?? MKMapItem(), selectedPhoto: customAnnotation.selectedPhoto)
         }
-        return nil
+
+        if let locationType = customAnnotation.locationType.flatMap(LocationType.init) {
+            annotationView.image = locationType.pinImage
+        } else {
+            annotationView.image = UIImage(named: "default")
+        }
+
+        annotationView.accessibilityIdentifier = annotationViewReuseIdentifier
+        return annotationView
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
 
         let customAnnotationView = view as? CustomAnnotationView
 
-        let pinController = SelectedPinController()
-        
-        pinController.name = customAnnotationView?.name
-        pinController.address = customAnnotationView?.address
-        pinController.photo = customAnnotationView?.selectedPhoto
-        pinController.startLocation = startLocation
-        pinController.endLocation = customAnnotationView?.mapItem
-        
-        present(pinController, animated: true)
-        
+        let selection = PinSelection(
+            name: customAnnotationView?.name,
+            address: customAnnotationView?.address,
+            photo: customAnnotationView?.selectedPhoto,
+            startLocation: startLocation,
+            endLocation: customAnnotationView?.mapItem
+        )
+
+        onPinSelected?(selection)
     }
 }
 

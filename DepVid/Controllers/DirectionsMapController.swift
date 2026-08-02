@@ -16,7 +16,8 @@ class DirectionsMapController: UIViewController {
     var endLocation: MKMapItem?
     let mapView = MKMapView()
     var route: [MKRoute.Step]?
-    
+    var onShowDirectionsList: ((_ route: [MKRoute.Step], _ startLocation: MKMapItem?, _ endLocation: MKMapItem?) -> Void)?
+
     override func viewDidLoad() {
         
         let nameAndAddressView = returnNameAndAddressLabel()
@@ -73,21 +74,18 @@ class DirectionsMapController: UIViewController {
         let directions = MKDirections(request: directionsRequest)
 
         // call calculate and get a response
-        
-        directions.calculate { (res, err) in
-            if let err = err {
-                print("Failed to find routing info", err)
-                return
-            }
-            
-            // gets the first route from the MKRoutes array
 
-            if let firstRoute = res?.routes.first {
-                self.mapView.addOverlay(firstRoute.polyline)
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let response = try await directions.calculate()
+                if let firstRoute = response.routes.first {
+                    mapView.addOverlay(firstRoute.polyline)
+                    route = firstRoute.steps
+                }
+            } catch {
+                print("Failed to find routing info", error)
             }
-            
-            self.route = res?.routes.first?.steps
-
         }
         mapView.setRegion(region, animated: false)
     }
@@ -137,22 +135,9 @@ class DirectionsMapController: UIViewController {
         
     }
     
-    // FlowLayout of the UICollectionView
-    
-    let flowLayout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.headerReferenceSize = .init(width: 200, height: 200)
-        return layout
-    }()
-
-    
     @objc fileprivate func goToDirectionTable() {
         if let route {
-            let vc = DirectionsCollectionViewController(collectionViewLayout:flowLayout)
-            vc.steps = Array(route[1...route.count-1])
-            vc.startLocation = startLocation
-            vc.endLocation = endLocation
-            present(vc, animated: true)
+            onShowDirectionsList?(Array(route[1...route.count-1]), startLocation, endLocation)
         }
     }
 }
@@ -163,16 +148,16 @@ extension DirectionsMapController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-        polylineRenderer.strokeColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        polylineRenderer.strokeColor = UIColor(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
         polylineRenderer.lineWidth = 5
         return polylineRenderer
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
 
         if !(annotation is CustomAnnotation) { return nil }
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "id")
-        annotationView.image = #imageLiteral(resourceName: "default")
+        annotationView.image = UIImage(named: "default")
         return annotationView
     }
 }

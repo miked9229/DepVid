@@ -30,21 +30,25 @@ final class DepVidUITests: XCTestCase {
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
-        
+
         snapshot("01LoginScreen", timeWaitingForIdle: 15)
-        
-        app.otherElements["Sophia Lin Ott, PsyD"].tap()
-        
+
+        // Tap the first available map pin rather than a specific business name,
+        // since that name comes from a live, unmocked MKLocalSearch result that can change.
+        let firstAnnotation = app.otherElements.matching(identifier: "CustomAnnotationView").firstMatch
+        XCTAssertTrue(firstAnnotation.waitForExistence(timeout: 15), "Expected at least one map pin to appear")
+        firstAnnotation.tap()
+
         snapshot("02SelectionScreen")
-        
+
         app.buttons["Get Directions"].tap()
-        
+
         snapshot("03SelectedMapScreen")
 
         app.buttons["Get List Of Directions"].tap()
-        
+
         snapshot("04DirectionsScreen")
-                
+
     }
 
     func testLaunchPerformance() throws {

@@ -26,6 +26,7 @@
 		92BBBDB125CF21FB00B3F8BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92BBBDAF25CF21FB00B3F8BF /* LaunchScreen.storyboard */; };
 		92F3CAC225DCB54600C099D6 /* DirectionsMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F3CAC125DCB54600C099D6 /* DirectionsMapController.swift */; };
 		92FBB3C9260198C0009293B9 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 92FBB3C8260198C0009293B9 /* JGProgressHUD */; };
+		30877432D1026706D7E805DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A32C3BB81E3C29B621792 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		92BBBDB025CF21FB00B3F8BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92BBBDB225CF21FB00B3F8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92F3CAC125DCB54600C099D6 /* DirectionsMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsMapController.swift; sourceTree = "<group>"; };
+		846A32C3BB81E3C29B621792 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		194EB3EF0DBDC5133C435F4C /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				846A32C3BB81E3C29B621792 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		927B4EFA2BE1C96F0074EC04 /* DepVidUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +155,7 @@
 				924EE91925D2C60D003C6A87 /* Model */,
 				92BBBDBA25CF221800B3F8BF /* HelperFiles */,
 				92BBBDB925CF221100B3F8BF /* Controllers */,
+				194EB3EF0DBDC5133C435F4C /* Coordinators */,
 			);
 			path = DepVid;
 			sourceTree = "<group>";
@@ -301,6 +312,7 @@
 				92BAD67C25E3066D007FE750 /* DirectionsCell.swift in Sources */,
 				9273A97B25D6DD7A0028E1D1 /* CustomAnnotationView.swift in Sources */,
 				924EE92025D2C658003C6A87 /* CustomAnnotation.swift in Sources */,
+				30877432D1026706D7E805DA /* AppCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +347,7 @@
 				DEVELOPMENT_TEAM = 59246CF2XH;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaeldoroff..DepVidUITests;
@@ -357,7 +369,7 @@
 				DEVELOPMENT_TEAM = 59246CF2XH;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.michaeldoroff..DepVidUITests;
@@ -376,7 +388,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -422,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -439,7 +451,7 @@
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -479,7 +491,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -498,7 +510,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2E3GYECC25;
 				INFOPLIST_FILE = DepVid/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -520,7 +532,7 @@
 				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 2E3GYECC25;
 				INFOPLIST_FILE = DepVid/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
